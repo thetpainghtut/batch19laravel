@@ -33,6 +33,8 @@ Migrations & Model
 - php artisan make:model Mymodel -m
 - Migrations (table structure)
 - Model () (Object Relational Mapping)
+- php artisan migrate
+- php artisan migrate:fresh (drop all tabel and migrate again)
 
 CRUD
 ----
@@ -40,3 +42,8 @@ CRUD
 - All Item List (p) => Detail (p)
 - Show Update Form (p) => Update
 - Delete
+
+Create Resource Controller for related model
+--------------------------------------------
+php artisan make:controller CategoryController --resource --model=Category
+
