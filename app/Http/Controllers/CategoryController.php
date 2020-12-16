@@ -25,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return "create form";
+        return view('backend.categories.create');
     }
 
     /**
@@ -36,7 +36,33 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request); // var_dump();, die();
+
+        // validation
+        $request->validate([
+            'name' => 'required|min:5',
+            'photo' => 'required|mimes:jpeg,jpg,png' 
+        ]);
+
+        // upload
+        if($request->file()) {
+            // 624872374523_a.jpg
+            $fileName = time().'_'.$request->photo->getClientOriginalName();
+
+            // categoryimg/624872374523_a.jpg
+            $filePath = $request->file('photo')->storeAs('categoryimg', $fileName, 'public');
+
+            $path = '/storage/'.$filePath;
+        }
+
+        // store data
+        $category = new Category;
+        $category->name = $request->name;
+        $category->photo = $path;
+        $category->save();
+
+        // redirect
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -58,7 +84,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('backend.categories.edit',compact('category'));
     }
 
     /**
@@ -70,7 +96,36 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        // dd($request); // var_dump();, die();
+
+        // validation
+        $request->validate([
+            'name' => 'required|min:5',
+            'photo' => 'sometimes|mimes:jpeg,jpg,png' 
+        ]);
+
+        // upload
+        if($request->file()) {
+            // 624872374523_a.jpg
+            $fileName = time().'_'.$request->photo->getClientOriginalName();
+
+            // categoryimg/624872374523_a.jpg
+            $filePath = $request->file('photo')->storeAs('categoryimg', $fileName, 'public');
+
+            $path = '/storage/'.$filePath;
+
+            // delete old image
+            
+
+            $category->photo = $path;
+        }
+
+        // update data
+        $category->name = $request->name;
+        $category->save();
+
+        // redirect
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -81,6 +136,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        // delete old image
+
+        // redirect
+        return redirect()->route('categories.index');
     }
 }

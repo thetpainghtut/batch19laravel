@@ -30,7 +30,7 @@ Ecommerce
 
 Migrations & Model
 ------------------
-- php artisan make:model Mymodel -m
+- php artisan make:model Mymodel -m -r
 - Migrations (table structure)
 - Model () (Object Relational Mapping)
 - php artisan migrate

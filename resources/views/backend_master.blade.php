@@ -130,7 +130,7 @@
           </ul>
         </li>
         <li><a class="app-menu__item" href="docs.html"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Docs</span></a></li>
-        <li><a class="app-menu__item {{ Request::is('categories') ? 'active' : '' }}" href="{{route('categories.index')}}"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Categories</span></a></li>
+        <li><a class="app-menu__item {{ Request::is('categories*') ? 'active' : '' }}" href="{{route('categories.index')}}"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Categories</span></a></li>
       </ul>
     </aside>
     
@@ -202,5 +202,7 @@
         ga('send', 'pageview');
       }
     </script>
+    <!-- Data table plugin-->
+    @yield('script')
   </body>
 </html>

@@ -12,28 +12,53 @@
         <li class="breadcrumb-item"><a href="#">Categories</a></li>
       </ul>
     </div>
-    <table class="table table-bordered">
-      <thead class="thead-dark">
-        <tr>
-          <th>#</th>
-          <th>Name</th>
-          <th>Photo</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach($categories as $category)
-        <tr>
-          <td>{{$category->id}}</td>
-          <td>{{$category->name}}</td>
-          <td><img src="{{$category->photo}}"></td>
-          <td>
-            <a href="#" class="btn btn-warning btn-sm">Edit</a>
-            <a href="#" class="btn btn-danger btn-sm">Delete</a>
-          </td>
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="tile">
+          <div class="tile-body">
+            <h4 class="d-inline-block">Categories List</h4>
+            <a href="{{route('categories.create')}}" class="btn btn-success float-right">Add New</a>
+
+            <div class="table-responsive mt-3">
+              <table class="table table-bordered" id="sampleTable">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Photo</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @php $i=1; @endphp
+                  @foreach($categories as $category)
+                  <tr>
+                    <td>{{$i++}}</td>
+                    <td>{{$category->name}}</td>
+                    <td><img src="{{asset($category->photo)}}" width="100"></td>
+                    <td>
+                      <a href="{{route('categories.edit',$category->id)}}" class="btn btn-warning btn-sm">Edit</a>
+                      <form method="post" action="{{route('categories.destroy',$category->id)}}" onsubmit="return confirm('Are you sure?')" class="d-inline-block">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" name="btnsubmit" class="btn btn-danger btn-sm" value="Delete">
+                      </form>
+                    </td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>   
+    </div>    
   </main>
+@endsection
+
+@section('script')
+  <script type="text/javascript" src="{{asset('backend_assets/js/plugins/jquery.dataTables.min.js')}}"></script>
+  <script type="text/javascript" src="{{asset('backend_assets/js/plugins/dataTables.bootstrap.min.js')}}"></script>
+  <script type="text/javascript">$('#sampleTable').DataTable();</script>
 @endsection
