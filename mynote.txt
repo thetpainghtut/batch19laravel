@@ -47,3 +47,9 @@ Create Resource Controller for related model
 --------------------------------------------
 php artisan make:controller CategoryController --resource --model=Category
 
+Add Default AUTH
+================
+- composer require laravel/ui:^2.4
+- php artisan ui bootstrap --auth
+- npm install
+- npm run dev

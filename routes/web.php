@@ -30,3 +30,8 @@ Route::get('contact', 'FirstController@contact')->name('contactpage');
 Route::get('dashboard', 'BackendController@dashboard')->name('dashboardpage');
 
 Route::resource('categories', 'CategoryController');
+Route::resource('subcategories', 'SubcategoryController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
