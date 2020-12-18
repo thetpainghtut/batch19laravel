@@ -18,8 +18,24 @@
   <!-- Main Content -->
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="post-preview">
+      {{-- <div class="col-lg-8 col-md-10 mx-auto"> --}}
+        @foreach($items as $item)
+        <div class="col-md-3">
+          <div class="card">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{$item->name}}</h5>
+              <p class="card-text">{{$item->description}}</p>
+
+              <p class="card-text">{{$item->brand->name}}</p>
+              <p class="card-text">{{$item->subcategory->name}}</p>
+
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+        @endforeach
+        {{-- <div class="post-preview">
           <a href="post.html">
             <h2 class="post-title">
               Man must explore, and this is exploration at its greatest
@@ -70,13 +86,13 @@
           <p class="post-meta">Posted by
             <a href="#">Start Bootstrap</a>
             on July 8, 2019</p>
-        </div>
+        </div> --}}
         <hr>
         <!-- Pager -->
-        <div class="clearfix">
+        {{-- <div class="clearfix">
           <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
-        </div>
-      </div>
+        </div> --}}
+      {{-- </div> --}}
     </div>
   </div>
 @endsection

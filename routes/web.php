@@ -26,12 +26,11 @@ Route::get('about', 'FirstController@about')->name('aboutpage');
 Route::get('contact', 'FirstController@contact')->name('contactpage');
 
 // Backend
-
-Route::get('dashboard', 'BackendController@dashboard')->name('dashboardpage');
-
-Route::resource('categories', 'CategoryController');
-Route::resource('subcategories', 'SubcategoryController');
-
-Auth::routes();
-
+Route::middleware('role:admin')->group(function () {
+  Route::get('dashboard', 'BackendController@dashboard')->name('dashboardpage');
+  Route::resource('categories', 'CategoryController');
+  Route::resource('subcategories', 'SubcategoryController');
+});
+// Auth
+Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');

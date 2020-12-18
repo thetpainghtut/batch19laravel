@@ -27,6 +27,7 @@
                     <th>#</th>
                     <th>Name</th>
                     <th>Photo</th>
+                    <th>Item Count</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
@@ -37,6 +38,7 @@
                     <td>{{$i++}}</td>
                     <td>{{$category->name}}</td>
                     <td><img src="{{asset($category->photo)}}" width="100"></td>
+                    <td>{{count($category->items)}}</td>
                     <td>
                       <a href="{{route('categories.edit',$category->id)}}" class="btn btn-warning btn-sm">Edit</a>
                       <form method="post" action="{{route('categories.destroy',$category->id)}}" onsubmit="return confirm('Are you sure?')" class="d-inline-block">

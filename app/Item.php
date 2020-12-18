@@ -14,4 +14,9 @@ class Item extends Model
   {
       return $this->belongsTo('App\Subcategory');
   }
+
+  public function brand()
+  {
+      return $this->belongsTo('App\Brand');
+  }
 }

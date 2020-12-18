@@ -53,3 +53,68 @@ Add Default AUTH
 - php artisan ui bootstrap --auth
 - npm install
 - npm run dev
+
+Frontend UI (Weekend)
+-----------
+  - Home
+    - Carousel
+    - Categories
+    - Discount Items (add to cart)
+    - Latest Item / Flash Sale (add to cart)
+    - Top Brands
+
+  - Cart
+    - selected Items
+    - Continue / checkout
+
+  - Filter
+    - show all items by filter
+    - add to cart
+
+  - Login / Register
+
+  - Order History
+
+Spatie Roles and Permissions
+-----------------------------
+  - composer require spatie/laravel-permission
+  - php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+  - php artisan migrate
+
+Email Verify
+------------
+  - user model must implements MustVerifyEmail
+  - Auth route ['verify'=> true]
+  - $this->middleware('verified') in construct method
+
+  - registe in mailtrap.io
+  - integration in .env
+  - check mail inboxes
+
+
+hasManyThrough
+--------------
+Category
+  - 1
+  - 2
+
+Subcategory
+  - 1 1
+  - 2 1
+  - 3 2
+
+Item
+  - 1 1
+  - 2 1
+  - 3 3
+  - 4 3
+  - 5 2
+
+ - 1, 2, 5 (1)
+ - 3, 4 (2)
+
+
+
+
+
+
