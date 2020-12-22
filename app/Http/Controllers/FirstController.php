@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Item;
+use App\Category;
 
 class FirstController extends Controller
 {
@@ -21,5 +22,11 @@ class FirstController extends Controller
   public function contact($value='')
   {
     return view('frontend.contact');
+  }
+
+  public function filter($id)
+  {
+    $category = Category::find($id);
+    return view('frontend.filter',compact('category'));
   }
 }

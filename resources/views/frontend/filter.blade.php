@@ -7,7 +7,7 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
-            <h1>All Items</h1>
+            <h1>{{$category->name}}</h1>
             <span class="subheading">A Blog Theme by Start Bootstrap</span>
           </div>
         </div>
@@ -19,7 +19,7 @@
   <div class="container">
     <div class="row">
       {{-- <div class="col-lg-8 col-md-10 mx-auto"> --}}
-        @foreach($items as $item)
+        @foreach($category->items as $item)
         <div class="col-md-3">
           <div class="card">
             <img src="..." class="card-img-top" alt="...">

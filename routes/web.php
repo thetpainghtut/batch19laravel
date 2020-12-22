@@ -25,6 +25,8 @@ Route::get('about', 'FirstController@about')->name('aboutpage');
 
 Route::get('contact', 'FirstController@contact')->name('contactpage');
 
+Route::get('filter/{id}', 'FirstController@filter')->name('filterpage');
+
 // Backend
 Route::middleware('role:admin')->group(function () {
   Route::get('dashboard', 'BackendController@dashboard')->name('dashboardpage');
