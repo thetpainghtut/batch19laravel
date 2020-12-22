@@ -29,4 +29,9 @@ class FirstController extends Controller
     $category = Category::find($id);
     return view('frontend.filter',compact('category'));
   }
+
+  public function cart($value='')
+  {
+    return view('frontend.cart');
+  }
 }

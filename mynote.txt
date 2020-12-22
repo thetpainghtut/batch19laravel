@@ -24,9 +24,27 @@ Ecommerce
     - item manage (1)
       - items, categories, subcategories, brands
     - order manage (3)
-      - orders, orderdetails
+      - orders
+        - orderdate, user_id, total, status, orderno, notes
+
+      - orderdetails
+        - qty, item_id, order_id
+
   - Customer
     -  view items, orders (2)
+
+
+Date: 22-12-2020                orderno: dfghjkdfghjfghjfgh
+-----------------------------------------------------------
+Name            Price             Subtotal
+-----------------------------------------------------------
+item one(2)      5000               10000
+item (1)         2000                 2000
+-------------------------------------------
+                                    12000
+
+
+
 
 Migrations & Model
 ------------------

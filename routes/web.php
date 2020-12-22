@@ -27,6 +27,10 @@ Route::get('contact', 'FirstController@contact')->name('contactpage');
 
 Route::get('filter/{id}', 'FirstController@filter')->name('filterpage');
 
+Route::get('cart', 'FirstController@cart')->name('cartpage');
+
+Route::resource('orders', 'OrderController');
+
 // Backend
 Route::middleware('role:admin')->group(function () {
   Route::get('dashboard', 'BackendController@dashboard')->name('dashboardpage');
