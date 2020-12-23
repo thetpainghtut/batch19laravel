@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->date('orderdate');
             $table->unsignedBigInteger('user_id');
             $table->integer('total');
-            $table->smallInteger('stuatus')->default(0);
+            $table->smallInteger('status')->default(0);
             $table->string('orderno');
             $table->text('note');
             $table->timestamps();

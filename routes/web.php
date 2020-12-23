@@ -25,6 +25,8 @@ Route::get('about', 'FirstController@about')->name('aboutpage');
 
 Route::get('contact', 'FirstController@contact')->name('contactpage');
 
+Route::get('orderhistory', 'FirstController@orderhistory')->name('orderhistorypage');
+
 Route::get('filter/{id}', 'FirstController@filter')->name('filterpage');
 
 Route::get('cart', 'FirstController@cart')->name('cartpage');

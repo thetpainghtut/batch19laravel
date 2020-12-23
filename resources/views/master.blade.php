@@ -57,6 +57,10 @@
             <a class="nav-link" href="{{route('contactpage')}}">Contact</a>
           </li>
 
+          <li class="nav-item">
+            <a class="nav-link" href="{{route('cartpage')}}">Cart</a>
+          </li>
+
           @guest
               <li class="nav-item">
                   <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -73,7 +77,7 @@
                   </a>
 
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                      <a href="#" class="dropdown-item">Order History</a>
+                      <a href="{{route('orderhistorypage')}}" class="dropdown-item">Order History</a>
                       <a class="dropdown-item" href="{{ route('logout') }}"
                          onclick="event.preventDefault();
                                        document.getElementById('logout-form').submit();">

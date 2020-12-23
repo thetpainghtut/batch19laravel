@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-  protected $fillable = ['orderdate', 'user_id', 'total',  'stuatus', 'orderno', 'note'];
+  protected $fillable = ['orderdate', 'user_id', 'total',  'status', 'orderno', 'note'];
 
   public function items()
     {
-        return $this->belongsToMany('App\Order','orderdetails')
+        return $this->belongsToMany('App\Item','orderdetails')
                     ->withPivot('qty')
                     ->withTimestamps();
     }
