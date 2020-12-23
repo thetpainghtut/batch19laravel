@@ -140,6 +140,7 @@
         </li>
         <li><a class="app-menu__item" href="docs.html"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Docs</span></a></li>
         <li><a class="app-menu__item {{ Request::is('categories*') ? 'active' : '' }}" href="{{route('categories.index')}}"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Categories</span></a></li>
+        <li><a class="app-menu__item {{ Request::is('orders*') ? 'active' : '' }}" href="{{route('orders.index')}}"><i class="app-menu__icon fa fa-file-code-o"></i><span class="app-menu__label">Orders</span></a></li>
       </ul>
     </aside>
     

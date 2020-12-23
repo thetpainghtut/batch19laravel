@@ -16,7 +16,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::orderBy('id','desc')->get();
+        return view('backend.orders.index',compact('orders'));
     }
 
     /**
@@ -37,20 +38,21 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        // transaction
-        
-        $order = new Order;
-        $order->orderdate = date('Y-m-d');
-        $order->user_id = Auth::id();
-        $order->total = $request->total;
-        $order->orderno = uniqid();
-        $order->note = $request->notes;
-        $order->save();
+        DB::transaction(function() use ($request) {
 
-        $ls = json_decode($request->ls);
-        foreach ($ls as $row) {
-            $order->items()->attach($row->id,['qty'=>$row->quantity]);
-        }
+            $order = new Order;
+            $order->orderdate = date('Y-m-d');
+            $order->user_id = Auth::id();
+            $order->total = $request->total;
+            $order->orderno = uniqid();
+            $order->note = $request->notes;
+            $order->save();
+
+            $ls = json_decode($request->ls);
+            foreach ($ls as $row) {
+                $order->items()->attach($row->id,['qty'=>$row->qty]);
+            }
+        });
 
         return 'Order Successful!';
     }
@@ -63,7 +65,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        return view('backend.orders.show',compact('order'));
     }
 
     /**
